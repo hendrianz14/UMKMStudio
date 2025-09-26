@@ -1,16 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
-import type { Database } from "@/types/database.types";
+import { useSupabaseClient, useSupabaseSession } from "@/components/providers/supabase-provider";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 export function Navbar() {
   const router = useRouter();
-  const supabase = useSupabaseClient<Database>();
-  const session = useSession();
+  const supabase = useSupabaseClient();
+  const session = useSupabaseSession();
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();

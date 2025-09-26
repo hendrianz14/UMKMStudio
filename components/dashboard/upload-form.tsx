@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSession } from "@supabase/auth-helpers-react";
+import { useSupabaseSession } from "@/components/providers/supabase-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +15,7 @@ interface UploadResponse {
 }
 
 export function UploadForm() {
-  const session = useSession();
+  const session = useSupabaseSession();
   const [caption, setCaption] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
