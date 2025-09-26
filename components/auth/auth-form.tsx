@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import type { Database } from "@/types/database.types";
+import { useSupabaseClient } from "@/components/providers/supabase-provider";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,7 @@ type AuthMode = "login" | "register";
 
 export function AuthForm() {
   const router = useRouter();
-  const supabase = useSupabaseClient<Database>();
+  const supabase = useSupabaseClient();
   const [mode, setMode] = useState<AuthMode>("login");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
